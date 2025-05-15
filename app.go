@@ -158,3 +158,8 @@ func (a *App) RunWithConfig(address string, config AppConfig) error {
 	a.logger.Info("Server gracefully stopped")
 	return nil
 }
+
+// ServeHTTP allows the App to implement the http.Handler interface
+func (a *App) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	a.router.ServeHTTP(w, r)
+}
